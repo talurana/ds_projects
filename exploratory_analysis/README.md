@@ -59,54 +59,59 @@
 - email: tarasova.ulya@gmail.com
 - github: [talurana](https://github.com/talurana)
 
-# ENG: DataScience project repository: Taxi Order Predictions
+# EN: Data Science Project Repository: Apartment Sale Advertisements Analysis
 
-### This project was created as part of the Yandex Practicum course.
+### This project was created as part of the Yandex Practicum: DataScience course.
 
-The course provided data for analysis and model training. The repository consists of two files: an HTML version of the project file and a Jupyter Notebook (.ipynb) version.
+The course provided the data for analysis. The project consists of a single file: a Jupyter Notebook (.ipynb) version.
 
-## Important features used in this project:
-- Seasonal Decomposition: Residual, Seasonal, Trend
-- Models: Ridge, Lasso, DecisionTreeRegressor, LGBMRegressor, RandomForestRegressor
-
-## Used libraries in project:
+## Libraries Used:
 - seaborn
-- numpy
 - matplotlib
 - pandas
-- statsmodels
-- sklearn
-- lightgbm
 
-## Tasks:
+## Project Objectives
 
-### **Main task:** 
-Create a model that can predict the number of cabs in the next hour.
+1. Data Preprocessing:
+   - Fill missing values and identify reasons.
+   - Check data types and eliminate duplicates.
 
-### Model Requirement:
-The value of the **RMSE** metric on the test sample should not exceed 48.
+2. Adding Columns:
+   - Calculate price per square meter, weekday, month, year, floor type, and distance to the city center.
 
-### Project Methodology:
-1. Load the data and resample it one hour interval at a time.
-2. Analyze the data.
-3. Train different models with different hyperparameters. Make a test sample of size 10% of the original data.
-4. Validate the data on the test sample and draw conclusions.
+3. Data Analysis:
+   - Plot histograms and handle anomalies.
+   - Describe the observations.
 
-### The following steps were accomplished during the project:
-- Primary data analysis:
-    - Analyzed omissions and duplicates: absent
-    - Replaced the index with the `datetime` column, sorted the index in ascending order, and resampled the data with the time period replaced with 1 hour. For the analysis, the data from March to August 2018 inclusive
-- Seasonality and trend analysis:
-    - Seasonality, trend and residuals were plotted. Seasonality during the day was analyzed and hypothesized the cause of increased demand. The seasonality in the data is 1 day
-    - A dataframe with additional features - time lags - was created for forecasting. The best RMSE results on the number of lags = 24.
-    - The data was split and prepared for model training
-    - The general trend of the data is an increase in the number of orders with each month - the trend function is increasing. This may be due to both increased airport traffic - more planes, and long family vacations - it is much more convenient to call a cab than to ask someone to pick up from the airport.
-- Model Training:
-    - The models selected for consideration were LGBMRegressor, RandomForestRegressor, Ridge, Lasso, and DecisionTreeRegressor
-    - The models for testing were selected based on the RMSE parameter on cross validation as well as model training time. LGBMRegressor was selected for further testing
-- Model Testing:
-    - Prediction visualization plots and RMSE calculation on the test data were plotted for the final decision. The best model was selected as LGBMRegressor based on its results on the training data as well as training time
-    - The result of the final selected model satisfies the selection conditions < 48
+4. Sales Analysis:
+   - Examine sale times, plot histogram, calculate mean and median.
+
+5. Price Factors:
+   - Investigate the dependence of price on parameters and visualize it.
+   - Calculate the average price per square meter in 10 localities.
+   - For St. Petersburg, plot a graph of average cost based on distance from the center.
+
+### The project involved the following steps:
+- Data Preprocessing:
+  - Filled in missing values, removed duplicates, and created new columns, including unique names for localities, apartment level in relation to the building, price per square meter, and distance to the city center in kilometers.
+- Correlation Analysis:
+  - Analyzed the dependence of apartment price on various features such as total area, living area, kitchen area, number of rooms, floor type (first, last, or other), and date of listing (weekday, month, year). The strongest correlation was found for total and living area, and kitchen area, in decreasing order of strength. A weaker correlation was also found between price and the number of rooms.
+- Impact of Distance to Center:
+  - Analysis showed that the price of apartments in St. Petersburg monotonically decreases with the increasing distance from the center within a certain range.
+- Independence of Features:
+  - No significant dependence was found between the floor level and the number of days a listing is on the market, suggesting their independence.
+- Analysis of Average Price per Square Meter:
+  - Calculated the average price per square meter in the 10 localities with the most listings. Results showed that the most expensive localities are Pushkin and St. Petersburg, as well as Kudrovo and Pargolovo; the most budget-friendly are Gatchina and Vsevolozhsk.
+- Evaluation of Apartment Sale Duration:
+  - On average, it takes about a hundred days to sell an apartment. Most apartments sell within 40-230 days; the minimum sale period is one day. A sale period of less than 40 days is considered fast, while a period of more than 230 days indicates a long sale period. Listings on the market for more than 450 days account for 10% of the total.
+
+### The following steps were performed during the project:
+Data handling included:
+   - Filling in missing data with median values in the columns days_employed and total_income, which account for total work experience in days and monthly income, respectively.
+   - Identifying and removing anomalies in the data - removing rows where the children column indicates a negative number of children or an abnormally large number: 20. For anomalies like negative work experience in the days_employed column, the values were replaced with positive ones.
+   - For education — unifying the data representation for the client's education level to eliminate implicit duplicates that could affect further analysis.
+   - To assess the dependencies of income on debts, data was categorized into five categories based on income level.
+   - For further analysis and data consistency, the purpose — the loan purpose — was categorized.
 
 ## Author:
 
